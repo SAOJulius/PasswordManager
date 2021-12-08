@@ -1,11 +1,13 @@
 import tkinter as tk
 from csv import writer
 from tkinter import *
+import time
 
 
 
 
 def hauptfenster():
+
     AnwendungsMenü = []
 
     def arrayfüllen():
@@ -17,6 +19,7 @@ def hauptfenster():
                 for line in file:
                     array = line.split(',')
                     AnwendungsMenü.append(array[2])
+                dropdown.place(x=65, y=330)
         except:
             pass
 
@@ -24,10 +27,15 @@ def hauptfenster():
 
 
     def csvschreiben():
+
         list = [benutzerentry.get(), passwortentry.get(), anwendungsentry.get()]
         with open("Datenbank.csv", "a", newline="") as f:
             writer(f).writerow(list)
             arrayfüllen()
+            benutzerentry.delete(0, "end")
+            passwortentry.delete(0, "end")
+            anwendungsentry.delete(0, "end")
+
 
 
     def csvlesen():
@@ -37,6 +45,7 @@ def hauptfenster():
             for line in f:
                 array = line.split(',')
                 if str(array[2]) == format(variable.get()):
+
                     label4.configure(text=array[0])
                     label5.configure(text=array[0])
                 else:
@@ -44,7 +53,7 @@ def hauptfenster():
 
 
     mainwindow = tk.Tk()
-    mainwindow.geometry('300x800')
+    mainwindow.geometry('300x500')
     mainwindow.title("Passwort Manager")
 
     label = tk.Label(text="Benutzername: ")
