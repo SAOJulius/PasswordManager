@@ -6,7 +6,7 @@ from mainWindow import hauptfenster
 from verschlüsseln import encrypt, get_key, decrypt
 
 
-def buttonclick():  # W1t/hm,#+L215Gh
+def buttonclick():
     message = hashlib.sha256()
     message.update(bytes(passwort.get(), 'utf-8'))
     schlüssel = passwort.get()
@@ -20,6 +20,9 @@ def buttonclick():  # W1t/hm,#+L215Gh
         except:
             print("Fail ")
         loginWindow.destroy()
+
+
+
         hauptfenster()
         encrypt(get_key(schlüssel), "Datenbank.csv")
 
