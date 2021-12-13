@@ -25,14 +25,14 @@ def hauptfenster():
             passwortentry.delete(0, "end")
             anwendungsentry.delete(0, "end")
 
-    def csvlesen(self):
+    def csvlesen():
         with open("Datenbank.csv", "r") as f:
 
             for line in f:
                 array = line.split(',')
-                if str(array[2]) == format(self.variable.get()):
-                    self.label4.configure(text=array[0])
-                    self.label5.configure(text=array[0])
+                if str(array[2]) == format(variable.get()):
+                    label4.configure(text=array[0])
+                    label5.configure(text=array[0])
                 else:
                     pass
 
