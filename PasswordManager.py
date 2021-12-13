@@ -7,9 +7,9 @@ from verschlüsseln import encrypt, get_key, decrypt
 
 
 def buttonclick():
-    message = hashlib.sha256()
-    message.update(bytes(passwort.get(), 'utf-8'))
     schlüssel = passwort.get()
+    message = hashlib.sha256()
+    message.update(bytes(schlüssel, 'utf-8'))
 
     if schlüssel == "":
         pass
@@ -18,13 +18,12 @@ def buttonclick():
         try:
             decrypt(get_key(passwort.get()), "encrypted-Datenbank.csv")
         except:
-            print("Fail ")
+            pass
+
         loginWindow.destroy()
-
-
-
         hauptfenster()
         encrypt(get_key(schlüssel), "Datenbank.csv")
+
 
         with open("Datenbank.csv", "w") as f:
             f.write("")
@@ -32,8 +31,6 @@ def buttonclick():
         with open("Datenbank.csv", "w") as f:
             f.write("")
         time.sleep(3)
-
-
 
 
 loginWindow = tk.Tk()
@@ -54,7 +51,5 @@ passwort.place(x=65, y=170)
 
 button = tk.Button(command=buttonclick, text="Login ", width=10, height=1)
 button.place(x=100, y=200)
-
-
 
 loginWindow.mainloop()
