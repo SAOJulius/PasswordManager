@@ -7,15 +7,10 @@ def hauptfenster():
 
     def optionmenueauffüllen():
         AnwendungsMenue.clear()
-        try:
-            with open("Datenbank.csv", "r") as file:
-
-                for line in file:
-                    array = line.split(',')
-                    AnwendungsMenue.append(array[2])
-                dropdown.place(x=65, y=330)
-        except:
-            pass
+        with open("Datenbank.csv", "r") as file:
+            for line in file:
+                array = line.split(',')
+                AnwendungsMenue.append(array[2])
 
     def csvschreiben():
         list = [benutzerentry.get(), passwortentry.get(), anwendungsentry.get()]
@@ -24,6 +19,15 @@ def hauptfenster():
             benutzerentry.delete(0, "end")
             passwortentry.delete(0, "end")
             anwendungsentry.delete(0, "end")
+        dropdown.destroy()
+        optionmenueauffüllen()
+        variable1 = tk.StringVar()
+        variable1.set(AnwendungsMenue[0])
+        dropdown1 = tk.OptionMenu(root, variable, *AnwendungsMenue)
+        dropdown1.place(x=65, y=330)
+
+        optionmenueauffüllen()
+        print(AnwendungsMenue)
 
     def csvlesen():
         with open("Datenbank.csv", "r") as f:
@@ -37,7 +41,8 @@ def hauptfenster():
                     pass
 
     def datensatzlöschen():
-        with open("Datenbank.csv", "r") as file:
+        with open("Datenbank.csv", "r", newline="") as file:
+
             for line in file:
                 array = line.split(',')
                 if array[2] == format(variable.get()):
@@ -50,18 +55,22 @@ def hauptfenster():
         pop.destroy()
 
     def Löschen():
-        with open("Datenbank.csv", "w") as file:
+        with open("Datenbank.csv", "r+", newline="") as file:
+            x = []
             for line in file:
                 array = line.split(',')
-                if array[2] == format(variable.get()):
-                    try:
-                        writer(file).writerow("")
-                        optionmenueauffüllen()
-                    except:
-                        pass
-
+                if array[2] != format(variable.get()):
+                    pass
                 else:
                     pass
+
+        pop.destroy()
+        dropdown.destroy()
+        optionmenueauffüllen()
+        variable1 = tk.StringVar()
+        variable1.set(AnwendungsMenue[0])
+        dropdown1 = tk.OptionMenu(root, variable, *AnwendungsMenue)
+        dropdown1.place(x=65, y=330)
 
     optionmenueauffüllen()
 
@@ -83,7 +92,6 @@ def hauptfenster():
 
         buttonNein = tk.Button(pop, command=löschenre, text="Nein", height=1, width=5)
         buttonNein.place(x=145, y=60)
-
 
     label = tk.Label(text="Benutzername: ")
     label.place(x=65, y=30)
@@ -127,4 +135,3 @@ def hauptfenster():
     button3.place(x=150, y=390)
 
     root.mainloop()
-
