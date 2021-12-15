@@ -101,6 +101,7 @@ def hauptfenster():
         pop = tk.Toplevel(root)
         pop.geometry('250x130')
         pop.title("Achtung")
+        pop['background'] = 'grey'
 
         labelfrage = tk.Label(pop, background="grey", activebackground="grey", text="Wirklich löschen? ")
         labelfrage.place(x=70, y=20)
