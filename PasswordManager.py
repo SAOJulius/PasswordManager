@@ -13,17 +13,18 @@ def buttonclick():
 
     if schlüssel == "":
         pass
-    elif str(nutzername.get()) == "Anja Krams" and message.hexdigest() == "16163d72e046beff5cc61be81f22a57aafe0bd8f773ed9fcbf0f6fb0fed4770f":
-
+    elif str(
+            nutzername.get()) == "Anja Krams" and message.hexdigest() == "16163d72e046beff5cc61be81f22a57aafe0bd8f773ed9fcbf0f6fb0fed4770f":
         try:
             decrypt(get_key(passwort.get()), "encrypted-Datenbank.csv")
         except:
             pass
-
-        loginWindow.destroy()
+        mainwindow.destroy()
         hauptfenster()
-        encrypt(get_key(schlüssel), "Datenbank.csv")
-
+        try:
+            encrypt(get_key(schlüssel), "Datenbank.csv")
+        except:
+            pass
 
         with open("Datenbank.csv", "w") as f:
             f.write("")
@@ -33,23 +34,24 @@ def buttonclick():
         time.sleep(3)
 
 
-loginWindow = tk.Tk()
-loginWindow.geometry('290x250')
-loginWindow.title("Login Fenster")
+mainwindow = tk.Tk()
+mainwindow.geometry('290x250')
+mainwindow.title("Login Fenster")
+mainwindow['background'] = 'grey'
 
-label = tk.Label(text="Benutzername: ")
+label = tk.Label(text="Benutzername: ",  background="grey", activebackground="grey")
 label.place(x=100, y=60)
 
-nutzername = tk.Entry()
+nutzername = tk.Entry(background="grey")
 nutzername.place(x=65, y=90)
 
-label1 = tk.Label(text="Passwort: ")
+label1 = tk.Label(text="Passwort: ", background="grey", activebackground="grey")
 label1.place(x=100, y=140)
 
-passwort = tk.Entry()
+passwort = tk.Entry(background="grey")
 passwort.place(x=65, y=170)
 
-button = tk.Button(command=buttonclick, text="Login ", width=10, height=1)
+button = tk.Button( background="grey", activebackground="grey", command=buttonclick, text="Login ", width=10)
 button.place(x=100, y=200)
 
-loginWindow.mainloop()
+mainwindow.mainloop()
