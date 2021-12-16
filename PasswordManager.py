@@ -39,7 +39,7 @@ mainwindow.geometry('290x220')
 mainwindow.title("Login Fenster")
 mainwindow['background'] = 'grey'
 
-label = tk.Label(text="Benutzername: ",  background="grey", activebackground="grey")
+label = tk.Label(text="Benutzername: ", background="grey", activebackground="grey")
 label.place(x=65, y=30)
 
 nutzername = tk.Entry(background="grey")
@@ -51,7 +51,7 @@ label1.place(x=65, y=110)
 passwort = tk.Entry(background="grey")
 passwort.place(x=65, y=140)
 
-button = tk.Button( background="grey", activebackground="grey", command=buttonclick, text="Login ", width=10)
+button = tk.Button(background="grey", activebackground="grey", command=buttonclick, text="Login ", width=10)
 button.place(x=100, y=170)
 
 mainwindow.mainloop()

@@ -1,10 +1,8 @@
 import csv
 import tkinter as tk
-from tkinter import *
 from csv import writer
+
 import pyperclip as pc
-
-
 
 
 def hauptfenster():
@@ -19,8 +17,6 @@ def hauptfenster():
                     AnwendungsMenue.append(array[2])
         except:
             pass
-
-
 
     copy1 = []
     copy3 = []
@@ -97,7 +93,6 @@ def hauptfenster():
     def copy2():
         pc.copy(copy3[0])
 
-
     def neuesPasswort():
 
         def csvschreiben():
@@ -161,10 +156,12 @@ def hauptfenster():
         labelfrage = tk.Label(pop, background="grey", activebackground="grey", text="Wirklich löschen? ")
         labelfrage.place(x=70, y=20)
 
-        buttonJa = tk.Button(pop, background="red", activebackground="red", command=Löschen, text="Ja", height=1, width=5)
+        buttonJa = tk.Button(pop, background="red", activebackground="red", command=Löschen, text="Ja", height=1,
+                             width=5)
         buttonJa.place(x=55, y=60)
 
-        buttonNein = tk.Button(pop, background="grey", activebackground="grey", command=löschenre, text="Nein", height=1, width=5)
+        buttonNein = tk.Button(pop, background="grey", activebackground="grey", command=löschenre, text="Nein",
+                               height=1, width=5)
         buttonNein.place(x=145, y=60)
 
     variable = tk.StringVar()
@@ -172,16 +169,18 @@ def hauptfenster():
     dropdown = tk.OptionMenu(root, variable, *AnwendungsMenue, command=csvlesen)
     dropdown.place(x=100, y=20)
 
-    button2 = tk.Button(background="grey", activebackground="grey", command=neuesPasswort, text="Neu ", width=7, height=1)
+    button2 = tk.Button(background="grey", activebackground="grey", command=neuesPasswort, text="Neu ", width=7,
+                        height=1)
     button2.place(x=65, y=90)
 
-    label4 = tk.Label(text="",  background="grey", activebackground="grey")
+    label4 = tk.Label(text="", background="grey", activebackground="grey")
     label4.place(x=65, y=130)
 
-    label5 = tk.Label(text="",  background="grey", activebackground="grey")
+    label5 = tk.Label(text="", background="grey", activebackground="grey")
     label5.place(x=65, y=170)
 
-    button3 = tk.Button(background="grey", activebackground="grey", command=abfragefenster, text="Löschen", width=7, height=1)
+    button3 = tk.Button(background="grey", activebackground="grey", command=abfragefenster, text="Löschen", width=7,
+                        height=1)
     button3.place(x=150, y=90)
 
     button4 = tk.Button(background="grey", activebackground="grey", command=copy, text="Copy", width=7, height=1)

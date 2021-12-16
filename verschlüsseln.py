@@ -1,15 +1,14 @@
 import os
+
 from Crypto import Random
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256
 
 
-
-
 def encrypt(key, filename):
     chunks = 32 * 1024
     out_file_name = "encrypted-" + os.path.basename(filename)
-    file_size = str(os.path.getsize(filename)).zfill(16) # 0000000000032001
+    file_size = str(os.path.getsize(filename)).zfill(16)  # 0000000000032001
     IV = Random.new().read(16)
     encryptor = AES.new(key, AES.MODE_CFB, IV)
     with open(filename, 'rb') as f_input:
@@ -23,6 +22,7 @@ def encrypt(key, filename):
                 if len(chunk) % 16 != 0:
                     chunk += b' ' * (16 - (len(chunk) % 16))
                 f_output.write(encryptor.encrypt(chunk))
+
 
 def decrypt(key, filename):
     chunks = 32 * 1024
@@ -39,10 +39,7 @@ def decrypt(key, filename):
                 f_output.write(decryptor.decrypt(chunk))
                 f_output.truncate(filesize)
 
+
 def get_key(password):
     hashing = SHA256.new(password.encode('utf-8'))
     return hashing.digest()
-
-
-
-
