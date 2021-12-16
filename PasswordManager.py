@@ -35,23 +35,23 @@ def buttonclick():
 
 
 mainwindow = tk.Tk()
-mainwindow.geometry('290x250')
+mainwindow.geometry('290x220')
 mainwindow.title("Login Fenster")
 mainwindow['background'] = 'grey'
 
 label = tk.Label(text="Benutzername: ",  background="grey", activebackground="grey")
-label.place(x=100, y=60)
+label.place(x=65, y=30)
 
 nutzername = tk.Entry(background="grey")
-nutzername.place(x=65, y=90)
+nutzername.place(x=65, y=60)
 
 label1 = tk.Label(text="Passwort: ", background="grey", activebackground="grey")
-label1.place(x=100, y=140)
+label1.place(x=65, y=110)
 
 passwort = tk.Entry(background="grey")
-passwort.place(x=65, y=170)
+passwort.place(x=65, y=140)
 
 button = tk.Button( background="grey", activebackground="grey", command=buttonclick, text="Login ", width=10)
-button.place(x=100, y=200)
+button.place(x=100, y=170)
 
 mainwindow.mainloop()
