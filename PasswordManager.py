@@ -1,6 +1,8 @@
 import hashlib
+import shutil
 import time
 import tkinter as tk
+from datetime import date
 
 from mainWindow import hauptfenster
 from verschlüsseln import encrypt, get_key, decrypt
@@ -21,10 +23,17 @@ def buttonclick():
             pass
         mainwindow.destroy()
         hauptfenster()
+        datum = date.today()
+
         try:
+            src = r'encrypted-Datenbank.csv'
+            des = r'Z:\{}.csv'.format(datum)
+            shutil.copy(src, des)
             encrypt(get_key(schlüssel), "Datenbank.csv")
         except:
-            pass
+            encrypt(get_key(schlüssel), "Datenbank.csv")
+            print("Passwörter wurden nicht auf dem NAS gespeichert!!!")
+
 
         with open("Datenbank.csv", "w") as f:
             f.write("")
