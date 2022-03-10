@@ -4,7 +4,7 @@ from csv import writer
 
 import pyperclip as pc
 
-
+print("testststs")
 def hauptfenster():
     AnwendungsMenue = []
 
